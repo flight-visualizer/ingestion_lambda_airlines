@@ -130,6 +130,8 @@ dmypy.json
 
 # Local .terraform directories
 **/.terraform/*
+*terraform*
+*.zip
 
 # .tfstate files
 *.tfstate
@@ -161,4 +163,29 @@ override.tf.json
 
 # Ignore CLI configuration files
 .terraformrc
-terraform.rc
+terraform.rc#ignore lambda_pkg dir
+lambda_pkg_iacy/
+#ignore lambda_pkg dir
+lambda_pkg_iacy/
+#ignore lambda_pkg dir
+lambda_pkg_iacy/
+#ignore lambda_pkg dir
+lambda_pkg_iacy/
+#ignore lambda_pkg dir
+lambda_pkg_iacy/
+#ignore lambda_pkg dir
+lambda_pkg_iacy/
+#ignore lambda_pkg dir
+lambda_pkg_iacy/
+#ignore lambda_pkg dir
+lambda_pkg_iacy/
+#ignore lambda_pkg dir
+lambda_pkg_iacy/
+#ignore lambda_pkg dir
+lambda_pkg_iacy/
+#ignore lambda_pkg dir
+lambda_pkg_iacy/
+#ignore lambda_pkg dir
+lambda_pkg_iacy/
+#ignore lambda_pkg dir
+lambda_pkg_iacy/
