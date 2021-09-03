@@ -2,7 +2,7 @@ provider "aws" {
     region = "us-east-1"
 }
 
-# Create the lambda role (using lambdarole.json file)
+# Create the lambda role
 # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 resource "aws_iam_role" "lambda_role" {
@@ -38,6 +38,7 @@ module "lambda_zip" {
 }
 
 # Run the function with CloudWatch Event rate scheduler
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 resource "aws_cloudwatch_event_rule" "event" {
     name = "event"
