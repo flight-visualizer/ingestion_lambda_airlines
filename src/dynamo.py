@@ -13,15 +13,13 @@ class DynamoService():
         self.region = os.getenv('AWS_REGION')
         dynamodb = boto3.resource('dynamodb', region_name = self.region)
         self.table = dynamodb.Table(self.table_name)
-
-        print(f'dynamo model: {model}')
         self.model = model
 
     def get(self, item: BaseModel) -> dict:
         """
         Reads item from dynamo db table
         """
-        print('hi')
+        print('Inside get method, not yet implemented...')
 
     def put(self, item: BaseModel) -> dict:
         """

@@ -6,7 +6,6 @@ from typing import List
 
 
 API_KEY = os.getenv('API_KEY')
-# API_KEY = 'fea7d4c61d5cff92ae5823a3016bce40'
 
 airline_db = DynamoService(
     table_name = 'ingestion_dynamo_airlines', 

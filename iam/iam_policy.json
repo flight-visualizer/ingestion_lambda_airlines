@@ -8,6 +8,11 @@
       "Resource": "*"
     },
     {
+      "Effect": "Allow",
+      "Action": "lambda:InvokeFunction",
+      "Resource": "arn:aws:lambda:us-east-1:699581650193:function:ingestion_lambda_airlines"
+    },
+    {
       "Sid": "",
       "Effect": "Allow",
       "Action": "dynamodb:BatchWriteItem",
