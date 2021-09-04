@@ -1,6 +1,6 @@
 import os
 import requests
-from dynamo import DynamoService
+from services.DynamoService import DynamoService
 from models import ResponseModel, AirlineCacheModel
 from typing import List
 
