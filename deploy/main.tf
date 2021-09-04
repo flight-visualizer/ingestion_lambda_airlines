@@ -5,8 +5,8 @@ provider "aws" {
 # Create the lambda role
 # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-resource "aws_iam_role" "lambda_role" {
-  name = "lambda_role"
+resource "aws_iam_role" "ingestion_lambda_airlines_role" {
+  name = "ingestion_lambda_airlines_role"
 
   assume_role_policy = "${file("../iam/iam_role.json")}"
 }
@@ -16,7 +16,7 @@ resource "aws_iam_role" "lambda_role" {
 
 resource "aws_iam_role_policy" "lambda_policy" {
   name = "lambda_policy"
-  role = aws_iam_role.lambda_role.id
+  role = aws_iam_role.ingestion_lambda_airlines_role.id
   policy = "${file("../iam/iam_policy.json")}"
 }
 
@@ -28,7 +28,7 @@ module "lambda_zip" {
   output_path      = "lambda_function.zip"
   description      = "example for lambda module"
   source_code_path = "../src/"
-  role_arn         = aws_iam_role.lambda_role.arn
+  role_arn         = aws_iam_role.ingestion_lambda_airlines_role.arn
   function_name    = "ingestion_lambda_airlines"
   handler_name     = "ingestion_lambda_airlines.lambda_handler"
   runtime          = "python3.6"
