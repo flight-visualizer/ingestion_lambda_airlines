@@ -1,8 +1,10 @@
 import os
 import requests
 from services.DynamoService import DynamoService
+from services.RequestService import RequestService
 from models import ResponseModel, AirlineCacheModel
 from typing import List
+
 
 
 API_KEY = os.getenv('API_KEY')
@@ -12,21 +14,19 @@ airline_db = DynamoService(
     model = AirlineCacheModel
 )
 
+requestService = RequestService(
+    endpoint = 'http://api.aviationstack.com/v1/airlines',
+    params = {'access_key': API_KEY},
+    responseModel = ResponseModel
+)
+
 def get_airline_data() -> List[AirlineCacheModel]:
     """
     Queries Aviation Stack for airline data
     """
     try:
         print('Attempting to retrieve airline data...')
-        response = requests.get(
-            'http://api.aviationstack.com/v1/airlines', 
-            params={
-                'access_key': API_KEY
-            }
-        )
-        print(f'Response received... status: {response.status_code}')
-
-        response = ResponseModel(**response.json())
+        response = requestService.query()
 
     except:
         print('Error querying aviation stack...')
