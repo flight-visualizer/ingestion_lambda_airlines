@@ -1,7 +1,6 @@
 import os
-import requests
 from services.DynamoService import DynamoService
-from services.RequestService import RequestService
+from services.HttpClient import HttpClient
 from models import ResponseModel, AirlineCacheModel
 from typing import List
 
@@ -14,9 +13,9 @@ airline_db = DynamoService(
     model = AirlineCacheModel
 )
 
-requestService = RequestService(
+requestService = HttpClient(
     endpoint = 'http://api.aviationstack.com/v1/airlines',
-    params = {'access_key': API_KEY},
+    api_key = API_KEY,
     responseModel = ResponseModel
 )
 
@@ -24,13 +23,7 @@ def get_airline_data() -> List[AirlineCacheModel]:
     """
     Queries Aviation Stack for airline data
     """
-    try:
-        print('Attempting to retrieve airline data...')
-        response = requestService.query()
-
-    except:
-        print('Error querying aviation stack...')
-        raise
+    response = requestService.query()
 
 
     db_records: List[AirlineCacheModel] = []
